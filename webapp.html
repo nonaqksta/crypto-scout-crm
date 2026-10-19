@@ -96,7 +96,7 @@
         let tg = window.Telegram.WebApp;
         tg.expand();
 
-        // Заглушка счетчиков (можно подтянуть из бэкенда бота)
+        // Заглушка счетчиков
         document.getElementById('newCount').innerText = "12";
         document.getElementById('workCount').innerText = "5";
         document.getElementById('partnerCount').innerText = "2";
@@ -104,6 +104,9 @@
 
         function triggerScan() {
             tg.sendData("run_scan_webapp");
+            tg.close();
+        }
+    </script>
         }
     </script>
 </body>
