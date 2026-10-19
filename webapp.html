@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Scout CRM</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        :root {
+            --bg-color: var(--tg-theme-bg-color, #0f172a);
+            --text-color: var(--tg-theme-text-color, #f8fafc);
+            --hint-color: var(--tg-theme-hint-color, #94a3b8);
+            --button-color: var(--tg-theme-button-color, #3b82f6);
+            --button-text: var(--tg-theme-button-text-color, #ffffff);
+            --card-bg: #1e293b;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 16px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #38bdf8;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: var(--card-bg);
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .stat-title {
+            font-size: 12px;
+            color: var(--hint-color);
+            text-transform: uppercase;
+        }
+        .stat-value {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+        .section-title {
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+        .btn {
+            background-color: var(--button-color);
+            color: var(--button-text);
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>🚀 Crypto Scout PRO Dashboard</h2>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-title">Новые лиды</div>
+            <div class="stat-value" id="newCount">...</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">В отработке</div>
+            <div class="stat-value" id="workCount">...</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Партнёры</div>
+            <div class="stat-value" id="partnerCount">...</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Всего в базе</div>
+            <div class="stat-value" id="totalCount">...</div>
+        </div>
+    </div>
+
+    <div class="section-title">Быстрые действия BD</div>
+    <button class="btn" onclick="triggerScan()">⚡ Запустить быстрый поиск</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
+        // Заглушка счетчиков (можно подтянуть из бэкенда бота)
+        document.getElementById('newCount').innerText = "12";
+        document.getElementById('workCount').innerText = "5";
+        document.getElementById('partnerCount').innerText = "2";
+        document.getElementById('totalCount').innerText = "48";
+
+        function triggerScan() {
+            tg.sendData("run_scan_webapp");
+        }
+    </script>
+</body>
+</html>
